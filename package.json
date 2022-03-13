@@ -1,0 +1,19 @@
+{
+  "name": "shorehamtank",
+  "version": "1.0.0",
+  "description": "Shoreham Tank Monitor",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rolly46/shorehamtank.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rolly46/shorehamtank/issues"
+  },
+  "homepage": "https://github.com/rolly46/shorehamtank#readme"
+}
