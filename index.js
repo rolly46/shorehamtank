@@ -58,6 +58,7 @@ async function start() {
     const collection = database.collection('shedTankLevel');
     collection.insertOne({ timestamp: new Date(), currentlevel: 4 }, ((err, result) => {
       res.send('ok');
+      console.log("tank level uploaded")
     }));
 
   });
