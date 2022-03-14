@@ -36,6 +36,7 @@ async function start() {
   // ENDPOINTS
 
   app.get("/tanklatest", function (req, res) {
+    res.send('ok')
   });
 
   app.get("/tankday", function (req, res) {
