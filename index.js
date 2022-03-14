@@ -15,10 +15,12 @@ app.use(express.static(__dirname + "/src"));
 app.use(bodyParser.json());
 
 
-async function main(){
+const client = new MongoClient(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
+
+
+async function start(){
 
   // get initial data
-  const client = new MongoClient(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
   client.connect(err => {
     // const collection = client.db("test").collection("devices");
     // perform actions on the collection object
@@ -33,7 +35,7 @@ async function main(){
 
 }
 
-main().catch(console.error);
+start().catch(console.error);
 
 
 // ENDPOINTS
@@ -54,5 +56,21 @@ app.get("/tankyear", function(req, res) {
 });
 
 app.post("/uploadtankmeasurement", function(req, res) {
+  async function sendit() {
+    try {
+      await client.connect();
+      const database = client.db("ShorehamDB");
+      const shedTankLevelCollection = database.collection("shedTankLevel");
+      // create a document to insert (use info submitted eventuly)
+      const doc = {
+        currentlevel: 4
+      }
+      const result = await shedTankLevelCollection.insertOne(doc);
+      console.log(`A document was inserted with the _id: ${result.insertedId}`);
+    } finally {
+      await client.close();
+    }
+  }
+  sendit().catch(console.dir);
 });
 
