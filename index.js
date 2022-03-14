@@ -1,11 +1,55 @@
-const express = require('express')
-const app = express()
-const port = process.env.PORT || 5000
+// const port = process.env.PORT || 5000
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
+var express = require("express");
+var path = require("path");
+var bodyParser = require("body-parser");
+var mongodb = require("mongodb");
+var ObjectID = mongodb.ObjectID;
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
+var CONTACTS_COLLECTION = "contacts";
+
+var app = express();
+app.use(express.static(__dirname + "/src"));
+app.use(bodyParser.json());
+
+// Create a database variable outside of the database connection callback to reuse the connection pool in your app.
+var db;
+
+// Connect to the database before starting the application server.
+mongodb.MongoClient.connect(process.env.MONGODB_URI, function (err, database) {
+  if (err) {
+    console.log(err);
+    process.exit(1);
+  }
+
+  // Save database object from the callback for reuse.
+  db = database;
+  console.log("Database connection ready");
+
+  // Initialize the app.
+  var server = app.listen(process.env.PORT || 5000, function () {
+    var port = server.address().port;
+    console.log("App now running on port", port);
+  });
+});
+
+// ENDPOINTS
+
+app.get("/tanklatest", function(req, res) {
+});
+
+app.get("/tankday", function(req, res) {
+});
+
+app.get("/tankweek", function(req, res) {
+});
+
+app.get("/tankmonth", function(req, res) {
+});
+
+app.get("/tankyear", function(req, res) {
+});
+
+app.post("/uploadtankmeasurement", function(req, res) {
+});
+

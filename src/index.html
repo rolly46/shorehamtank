@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Shoreham Tank</title>
+
+	<meta name="description" content="Source code generated using layoutit.com">
+	<meta name="author" content="LayoutIt!">
+
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/scripts.js"></script>
+	<script src="./js/waterTank.js"></script>
+
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/style.css" rel="stylesheet">
+
+	<!-- shards ui -->
+	<link rel="stylesheet" href="https://unpkg.com/shards-ui@latest/dist/css/shards.min.css">
+	<script src="https://unpkg.com/shards-ui@latest/dist/js/shards.min.js"></script>
+
+	<script src='https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js'></script>
+
+
+</head>
+
+<body>
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="row">
+					<div class="col-md-4">
+					</div>
+					<div class="col-md-4">
+						<div class="page-header" style="text-align: right;">
+							<h1>
+								Shoreham Tank
+							</h1>
+						</div>
+					</div>
+					<div class="col-md-4">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-4">
+					</div>
+					<div class="col-md-4" style="padding-top: 20px;padding-bottom: 20px;">
+						<div class="btn-group" role="group" style="padding-left: 25%; padding-right: 25%;">
+
+							<button class="btn btn-success" id="triggerLive" type="button">
+								Live
+							</button>
+							<button class="btn btn-info" id="triggerHistorical" type="button">
+								Historical
+							</button>
+						</div>
+					</div>
+					<div class="col-md-4">
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<!-- LIVE -->
+		<div class="row" id="liveCard">
+			<div class="col-md-2">
+			</div>
+			<div class="col-md-8">
+				<div class="card">
+					<div class="card-body">
+
+						<div class="row">
+
+							<div class="col-md-6" style="align-items: center;">
+								<h4 class="card-title">Live</h4>
+							</div>
+							<div class="col-md-6" style="padding-bottom: 3%;">
+								<span class="badge badge-success" id="spottedstat"> Tank has (dropped/risen) x amount in
+									the last 24 hours </span>
+							</div>
+						</div>
+						<div class="row">
+							<div class="tank waterTankHere1"></div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<div class="col-md-2">
+			</div>
+		</div>
+
+		<!-- HISTORICAL -->
+		<div class="row" id="historicalCard" style="display: none;">
+			<div class="col-md-2">
+			</div>
+			<div class="col-md-8">
+				<div class="card">
+					<div class="card-body">
+
+						<div class="row">
+
+							<div class="col-md-6" style="align-items: center;">
+								<h4 class="card-title">Historical Tank Data</h4>
+							</div>
+							<div class="col-md-6" style="padding-bottom: 3%;">
+								<span class="badge badge-success" id="spottedstat"> Tank has (dropped/risen) x amount in
+									the last 24 hours </span>
+							</div>
+						</div>
+						<div class="row">
+							<!-- chart 1 : last 24 hours -->
+							<canvas id="chart" width="400" height="400"></canvas>
+						</div>
+						<!-- chart 2 : last month -->
+						<div class="row">
+							<!-- <canvas id="chart" width="400" height="400"></canvas> -->
+						</div>
+						<!-- chart 2 : last calander year -->
+						<div class="row">
+							<!-- <canvas id="chart" width="400" height="400"></canvas> -->
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<div class="col-md-2">
+			</div>
+		</div>
+
+
+
+
+
+
+	</div>
+
+
+</body>
+
+</html>
