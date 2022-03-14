@@ -57,19 +57,21 @@ app.get("/tankyear", function(req, res) {
 
 app.post("/uploadtankmeasurement", function(req, res) {
   async function sendit() {
-    try {
-      await client.connect();
-      const database = client.db("ShorehamDB");
-      const shedTankLevelCollection = database.collection("shedTankLevel");
-      // create a document to insert (use info submitted eventuly)
-      const doc = {
-        currentlevel: 4
-      }
-      const result = await shedTankLevelCollection.insertOne(doc);
-      console.log(`A document was inserted with the _id: ${result.insertedId}`);
-    } finally {
-      await client.close();
+     // get initial data
+  client.connect(err => {
+    const database = client.db("ShorehamDB");
+    const shedTankLevelCollection = database.collection("shedTankLevel");
+    // create a document to insert (use info submitted eventuly)
+    const doc = {
+      currentlevel: 4
     }
+    const result = await shedTankLevelCollection.insertOne(doc);
+    console.log(`A document was inserted with the _id: ${result.insertedId}`);
+    client.close();
+  });
+
+
+
   }
   sendit().catch(console.dir);
 });
